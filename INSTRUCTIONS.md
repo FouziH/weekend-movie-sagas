@@ -55,6 +55,7 @@ This should show all details **including ALL genres** for the selected movie. Yo
 
 - TODO: The details page should have a `Back to List` button, which should bring the user to the Home/List Page
 
+//Start here once ⬆️ is complete 
 > Base functionality does not require the movie details to load correctly after refresh of the browser.
 
 ### Add Movie Page

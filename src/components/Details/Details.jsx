@@ -1,14 +1,20 @@
 import {  useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import DetailsItem from "../DetailsItem/DetailsItems";
 function Details() {
     const history = useHistory()
+    const movieDetailsAndGenres = useSelector(
+      (store) => store.getMovieDetailsAndGenres
+    );
    
   return (
     <>
       <h1>Movie Details</h1>
       <br />
       <br />
-      <div></div>
+      <div>{movieDetailsAndGenres.map((items, i) => (
+        <DetailsItem key={i} items={items}/>
+      ))}</div>
       <br />
       <br />
     </>
