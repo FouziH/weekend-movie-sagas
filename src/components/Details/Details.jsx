@@ -1,16 +1,19 @@
 import {  useSelector } from "react-redux";
+import { useHistory } from "react-router";
 function Details() {
-    const movieDescription = useSelector(
-      store => store.movieDescriptionReducer
-    );
+    const history = useHistory()
+   
   return (
     <>
       <h1>Movie Details</h1>
-      <img src={movieDescription.image} alt="" />
       <br />
       <br />
-      <div>{movieDescription.description}</div>
+      <div></div>
+      <br />
+      <br />
     </>
+
+
   );
 }
 
