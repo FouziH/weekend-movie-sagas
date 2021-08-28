@@ -1,0 +1,5 @@
+*********************Weekend Project TO DO List Movies**************************
+PHASE 1:
+    [x] Create a database named `saga_movies_weekend`
+    [x] Run the queries from `database.sql` on the `saga_movies_weekend` database
+PHASE 2:

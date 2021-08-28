@@ -52,14 +52,24 @@ const genres = (state = [], action) => {
     }
 }
 
+const movieDescriptionReducer = (state =[], action ) =>{
+    switch(action.type){
+        case 'PUSH_MOVIE_DESCRIPTION':
+            return action.payload;
+        default:
+            return state
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
-    combineReducers({
-        movies,
-        genres,
-    }),
-    // Add sagaMiddleware to our store
-    applyMiddleware(sagaMiddleware, logger),
+  combineReducers({
+    movies,
+    genres,
+    movieDescriptionReducer,
+  }),
+  // Add sagaMiddleware to our store
+  applyMiddleware(sagaMiddleware, logger)
 );
 
 // Pass rootSaga into our sagaMiddleware
