@@ -12,14 +12,14 @@ function Details() {
       <h1>Movie Details</h1>
       <br />
       <br />
-      <div>{movieDetailsAndGenres.map((items, i) => (
-        <DetailsItem key={i} items={items}/>
-      ))}</div>
+      <div>
+        {movieDetailsAndGenres.map((items, i) => (
+          <DetailsItem key={i} items={items} />
+        ))}
+      </div>
       <br />
       <br />
     </>
-
-
   );
 }
 
