@@ -65,7 +65,13 @@ function DetailsItem  ({items}) {
         </div>
         <br />
         <Container className={classes.root}>
-          <Grid container>
+          <Grid
+            container
+            spacing={2}
+            direction="column"
+            alignItems="center"
+            justify="center"
+          >
             <Grid xs={12} xs={6} md={6} lg={5}>
               <Paper>
                 <img src={items.movieimage} alt="" />
