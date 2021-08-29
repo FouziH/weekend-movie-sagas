@@ -10,7 +10,7 @@ function DetailsItem  ({items}) {
   }
     return (
       <>
-        <img src={items.moviename} alt="" />
+        <img src={items.movieimage} alt="" />
         <br />
         <br />
         <div>Genre: {items.moviegenres.join(', ')}</div>

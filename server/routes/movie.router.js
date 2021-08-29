@@ -17,11 +17,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const sqlQuery = `SELECT  "movies".poster as moviename, ARRAY_AGG( "genres".name) as moviegenres, "movies".description as movieDescription FROM "movies_genres"
+  const sqlQuery = `SELECT  "movies".poster as movieimage, ARRAY_AGG( "genres".name) as moviegenres, "movies".description as movieDescription FROM "movies_genres"
 JOIN "movies" ON "movies".id = "movies_genres".movie_id
 JOIN "genres" ON "genres".id = "movies_genres".genre_id
 WHERE "movies".id =$1
-GROUP BY movieDescription,  moviename;
+GROUP BY movieDescription, movieimage;;
 `; ;
 let sqlParams = [
     req.params.id

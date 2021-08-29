@@ -6,6 +6,7 @@ function Details() {
     const movieDetailsAndGenres = useSelector(
       (store) => store.getMovieDetailsAndGenres
     );
+    console.log('movie details and genres is', movieDetailsAndGenres)
    
   return (
     <>
