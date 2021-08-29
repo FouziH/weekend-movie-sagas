@@ -84,13 +84,18 @@ function addMovie() {
           </MenuItem>
         ))}
       </Select>
-      <Button variant="contained" color="primary" onClick={onSaveMovie}>
-        Save
-      </Button>
-      <Button variant="contained" color="secondary" onClick={onCancel}>
-        Cancel
-      </Button>
-    </>
+      <br/>
+      <div className="detailsButton">
+        <Button variant="contained" color="primary" onClick={onSaveMovie}>
+          Save
+        </Button>
+        </div>
+        <div className="detailsButton">
+        <Button variant="contained" color="secondary" onClick={onCancel}>
+          Cancel
+        </Button>
+      </div>
+      </>
   );
 }
 

@@ -22,3 +22,13 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.detailsButton{
+  display: inline-block;
+  padding: 10px;
+  margin: auto 15px;
+}
+.mainDetailsButtonDiv{
+  background-color: lightblue;
+  border: 2px solid black;
+  padding:30px;
+}
