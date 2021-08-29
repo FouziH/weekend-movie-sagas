@@ -6,7 +6,8 @@ import { useHistory } from "react-router";
 import { Button, MenuItem } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import {Select} from "@material-ui/core";
-import Input from "@material-ui/core/Input";
+import { Autocomplete } from "@material-ui/lab";
+
 
 
 
@@ -17,7 +18,7 @@ function addMovie() {
   let [title, setTitle] = useState("");
   let [imageUrl, setImageUrl] = useState("");
   let [description, setDescription] = useState("");
-  let [selectGenre, setSelectGenre] = useState();
+  let [selectGenre, setSelectGenre] = useState(6);
   let payloadObject = {
     title: title,
     poster: imageUrl,
@@ -46,7 +47,6 @@ function addMovie() {
    };
   return (
     <>
-      <h6>Movie List Manager </h6>
       <TextField
         variant="filled"
         label="Name"
@@ -76,26 +76,26 @@ function addMovie() {
       <label>Choose a genre:</label>
       <Select
         value={selectGenre}
-        onChange={(event) => setSelectGenre(event.target.value)}
+        onChange={(event) => setSelectGenre(event.target.value)} defaultValue="any" id={1}
       >
         {genres.map((genreName, i) => (
-          <MenuItem value={genreName.id} key={i}>
-            {genreName.name}
+          <MenuItem value={genreName.id} key={i} selected={genreName[0]}>
+            <em>{genreName.name}</em>
           </MenuItem>
         ))}
       </Select>
-      <br/>
+      <br />
       <div className="detailsButton">
         <Button variant="contained" color="primary" onClick={onSaveMovie}>
           Save
         </Button>
-        </div>
-        <div className="detailsButton">
+      </div>
+      <div className="detailsButton">
         <Button variant="contained" color="secondary" onClick={onCancel}>
           Cancel
         </Button>
       </div>
-      </>
+    </>
   );
 }
 

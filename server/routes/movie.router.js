@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
 JOIN "movies" ON "movies".id = "movies_genres".movie_id
 JOIN "genres" ON "genres".id = "movies_genres".genre_id
 WHERE "movies".id =$1
-GROUP BY movieDescription, movieimage;;
+GROUP BY movieDescription, movieimage;
 `; ;
 let sqlParams = [
     req.params.id
