@@ -15,15 +15,21 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
 
     return (
-      <Container>
-        <Grid item={true}
+      <Container
+      >
+        <Grid
+          item
+          xs={2}
+          md={2}
+          spacing={10}
           container
-          xs={12}
-          spacing={0}
+          style={{
+            margin: "auto",
+            display: "flex",
+          }}
           direction="column"
-          alignItems="center"
         >
-          <Grid item={true} xs={7} md={2}>
+          <Grid item>
             {movies.map((movie) => (
               <Paper key={movie.id}>
                 <MovieItem movie={movie} />
