@@ -72,17 +72,24 @@ function DetailsItem  ({items}) {
             spacing={2}
             direction="column"
             alignItems="center"
-             style= {{
-               margin: "auto",
-                width: "80%",
-                display: "inner-block"
-             }}
-            
+            style={{
+              margin: "auto",
+              width: "80%",
+              display: "inner-block",
+              padding: 20,
+            }}
           >
-            <Grid item={true} xs={8} md={8}>
-              <Paper>
+            <Grid item={true} xs={6} md={4}>
+              <Paper
+                style={{
+                  padding: 20,
+                }}
+              >
                 <img src={items.movieimage} alt="" />
+                <br />
+                <br />
                 <div>Genre: {items.moviegenres.join(", ")} </div>
+                <br />
 
                 <div>{items.moviedescription}</div>
               </Paper>
