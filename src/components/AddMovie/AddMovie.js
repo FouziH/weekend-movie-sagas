@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 import { Button, MenuItem } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import {Select} from "@material-ui/core";
-import { Autocomplete } from "@material-ui/lab";
+import { makeStyles } from "@material-ui/core";
 
 
 
@@ -18,7 +18,7 @@ function addMovie() {
   let [title, setTitle] = useState("");
   let [imageUrl, setImageUrl] = useState("");
   let [description, setDescription] = useState("");
-  let [selectGenre, setSelectGenre] = useState(6);
+  let [selectGenre, setSelectGenre] = useState('');
   let payloadObject = {
     title: title,
     poster: imageUrl,
@@ -32,6 +32,13 @@ function addMovie() {
   }, []);
   const genres = useSelector(store => store.genres)
   console.log(genres)
+//   const useStyles = makeStyles({
+//     item: {
+//         width: 56
+
+//     }
+//   })
+//   const classes = useStyles()
   const onSaveMovie = () => {
     console.log("on save movie button");
     dispatch({
@@ -75,11 +82,12 @@ function addMovie() {
       />
       <label>Choose a genre:</label>
       <Select
+       displayEmpty
         value={selectGenre}
-        onChange={(event) => setSelectGenre(event.target.value)} defaultValue="any" id={1}
+        onChange={(event) => setSelectGenre(event.target.value)}
       >
         {genres.map((genreName, i) => (
-          <MenuItem value={genreName.id} key={i} selected={genreName[0]}>
+          <MenuItem value={genreName.id} key={i}>
             <em>{genreName.name}</em>
           </MenuItem>
         ))}
