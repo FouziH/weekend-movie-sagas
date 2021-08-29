@@ -62,7 +62,7 @@ function DetailsItem  ({items}) {
         <Card className={classes.root}>
           <CardContent>
             <Typography className={classes.title} variant="body1" component="h1">
-              <h1>MOVIE DETAILS</h1>
+            MOVIE DETAILS
             </Typography>
             <br />
             <Typography color="textSecondary" gutterBottom>
@@ -72,7 +72,7 @@ function DetailsItem  ({items}) {
               Ge{bull}n{bull}r{bull}es
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
-              <div>{items.moviegenres.join(", ")}</div>
+             {items.moviegenres.join(", ")}
             </Typography>
             <Typography variant="body2" component="div">
               <div>{items.moviedescription}</div>
