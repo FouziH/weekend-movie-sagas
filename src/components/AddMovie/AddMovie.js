@@ -2,8 +2,10 @@ import React from "react";
 import { useState, useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 function addMovie() {
+    let history = useHistory()
   //assigning history to dispatch to useDispatch from react-redux
   const dispatch = useDispatch();
   let [title, setTitle] = useState("");
@@ -16,7 +18,6 @@ function addMovie() {
     description: description,
     genre_id: selectGenre,
   };
-
   useEffect(() => {
       dispatch({
           type: 'FETCH_GENRE'
@@ -30,7 +31,13 @@ function addMovie() {
       type: "ADD_NEW_MOVIE",
       payload: payloadObject,
     });
+     console.log("on cancel button");
+     history.push("/");
   };
+   const onCancel = () => {
+     console.log("on cancel button");
+     history.push("/");
+   };
   return (
     <>
       <h6>Movie title</h6>
@@ -57,11 +64,11 @@ function addMovie() {
         onChange={(event) => setSelectGenre(event.target.value)}
       >
         {genres.map((genreName, i) => (
-          <option value={genreName.id} key={i}>{genreName.id} {genreName.name}</option>
+          <option value={genreName.id} key={i}>{genreName.name}</option>
         ))}
       </select>
       <button onClick={onSaveMovie}>Save</button>
-      <button>Cancel</button>
+      <button onClick={onCancel}>Cancel</button>
     </>
   );
 }

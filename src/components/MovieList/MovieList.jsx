@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import MovieItem from '../MovieItem/MovieItem';
 function MovieList() {
-
+      useEffect(() => {
+        dispatch({ type: "FETCH_MOVIES" });
+      }, []);
+      
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
-
-    useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' });
-    }, []);
 
     return (
         <main>
