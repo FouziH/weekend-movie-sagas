@@ -3,6 +3,12 @@ import { useState, useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Button, MenuItem } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import {Select} from "@material-ui/core";
+import Input from "@material-ui/core/Input";
+
+
 
 function addMovie() {
     let history = useHistory()
@@ -40,18 +46,27 @@ function addMovie() {
    };
   return (
     <>
-      <h6>Movie title</h6>
-      <input
+      <h6>Movie List Manager </h6>
+      <TextField
+        variant="filled"
+        label="Name"
+        placeholder="Enter movie name"
         type="text"
         value={title}
         onChange={(event) => setTitle(event.target.value)}
       />
-      <input
+      <TextField
+        variant="filled"
+        label="Image"
+        placeholder="Enter movie url"
         type="url"
         value={imageUrl}
         onChange={(event) => setImageUrl(event.target.value)}
       />
-      <textarea
+      <TextField
+        placeholder="Enter movie description"
+        variant="filled"
+        label="Movie description"
         name="movie_description"
         rows="4"
         value={description}
@@ -59,16 +74,22 @@ function addMovie() {
         cols="50"
       />
       <label>Choose a genre:</label>
-      <select
+      <Select
         value={selectGenre}
         onChange={(event) => setSelectGenre(event.target.value)}
       >
         {genres.map((genreName, i) => (
-          <option value={genreName.id} key={i}>{genreName.name}</option>
+          <MenuItem value={genreName.id} key={i}>
+            {genreName.name}
+          </MenuItem>
         ))}
-      </select>
-      <button onClick={onSaveMovie}>Save</button>
-      <button onClick={onCancel}>Cancel</button>
+      </Select>
+      <Button variant="contained" color="primary" onClick={onSaveMovie}>
+        Save
+      </Button>
+      <Button variant="contained" color="secondary" onClick={onCancel}>
+        Cancel
+      </Button>
     </>
   );
 }
