@@ -16,15 +16,14 @@ function MovieList() {
 
     return (
       <Container>
-        <Grid
+        <Grid item={true}
           container
-          container
+          xs={12}
           spacing={0}
           direction="column"
           alignItems="center"
-          justify="center"
         >
-          <Grid xs={12} xs={6} md={6} lg={5}>
+          <Grid item={true} xs={7} md={2}>
             {movies.map((movie) => (
               <Paper key={movie.id}>
                 <MovieItem movie={movie} />
@@ -37,16 +36,3 @@ function MovieList() {
 }
 
 export default MovieList;
-
-//   <main>
-//             <h1>MovieList</h1>
-//             <section className="movies">
-//                 {movies.map(movie => {
-//                     return (
-//                         <div key={movie.id} >
-//                            <MovieItem movie={movie}/> 
-//                         </div>
-//                     );
-//                 })}
-//             </section>
-//         </main>

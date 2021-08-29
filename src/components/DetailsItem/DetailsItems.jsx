@@ -67,15 +67,17 @@ function DetailsItem  ({items}) {
         <Container className={classes.root}>
           <Grid
             container
+            item={true}
+            xs={12}
             spacing={2}
             direction="column"
             alignItems="center"
-            justify="center"
           >
-            <Grid xs={12} xs={6} md={6} lg={5}>
+            <Grid item={true} xs={7} md={2}>
               <Paper>
                 <img src={items.movieimage} alt="" />
-                <div> {items.moviegenres.join(", ")} </div>
+                <div>Genre: {items.moviegenres.join(", ")} </div>
+
                 <div>{items.moviedescription}</div>
               </Paper>
             </Grid>
