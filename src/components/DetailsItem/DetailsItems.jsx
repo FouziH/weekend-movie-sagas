@@ -5,7 +5,11 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import {makeStyles} from "@material-ui/core/styles"
+import {makeStyles} from "@material-ui/core/styles";
+import {Grid} from "@material-ui/core"
+import {Container} from "@material-ui/core";
+import { Paper } from "@material-ui/core";
+
 function DetailsItem  ({items}) {
   const history = useHistory();
   const useStyles = makeStyles({
@@ -59,32 +63,24 @@ function DetailsItem  ({items}) {
             </Button>
           </div>
         </div>
-        <Card className={classes.root}>
-          <CardContent>
-            <Typography className={classes.title} variant="body1" component="h1">
-            MOVIE DETAILS
-            </Typography>
-            <br />
-            <Typography color="textSecondary" gutterBottom>
-              <img src={items.movieimage} alt="" />
-            </Typography>
-            <Typography variant="body2" component="h1">
-              Ge{bull}n{bull}r{bull}es
-            </Typography>
-            <Typography className={classes.pos} color="textSecondary">
-             {items.moviegenres.join(", ")}
-            </Typography>
-            <Typography variant="body2" component="div">
-              <div>{items.moviedescription}</div>
-            </Typography>
-          </CardContent>
-          {/* <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions> */}
-        </Card>
+        <br />
+        <Container className={classes.root}>
+          <Grid container>
+            <Grid xs={12} xs={6} md={6} lg={5}>
+              <Paper>
+                <img src={items.movieimage} alt="" />
+                <div> {items.moviegenres.join(", ")} </div>
+                <div>{items.moviedescription}</div>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Container>
       </>
     );
 
 }
 
 export default DetailsItem
+
+
+          
