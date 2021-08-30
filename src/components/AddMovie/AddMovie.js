@@ -8,9 +8,6 @@ import { TextField } from "@material-ui/core";
 import {Select} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
-
-
-
 function addMovie() {
     let history = useHistory()
   //assigning history to dispatch to useDispatch from react-redux
@@ -25,20 +22,14 @@ function addMovie() {
     description: description,
     genre_id: selectGenre,
   };
-  useEffect(() => {
+    useEffect(() => {
       dispatch({
-          type: 'FETCH_GENRE'
-      })
-  }, []);
+        type: "FETCH_GENRE",
+      });
+    }, []);
   const genres = useSelector(store => store.genres)
   console.log(genres)
-//   const useStyles = makeStyles({
-//     item: {
-//         width: 56
 
-//     }
-//   })
-//   const classes = useStyles()
   const onSaveMovie = () => {
     console.log("on save movie button");
     dispatch({
@@ -82,13 +73,12 @@ function addMovie() {
       />
       <label>Choose a genre:</label>
       <Select
-       displayEmpty
         value={selectGenre}
         onChange={(event) => setSelectGenre(event.target.value)}
       >
         {genres.map((genreName, i) => (
           <MenuItem value={genreName.id} key={i}>
-            <em>{genreName.name}</em>
+            {genreName.name}
           </MenuItem>
         ))}
       </Select>

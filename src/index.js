@@ -38,7 +38,7 @@ function* addNewMovie (action) {
         const response = yield axios.post('/api/movie/', action.payload);
         console.log("adding new movie response". response.data)
 
-        yield put(yield put({ type: 'SET_MOVIES', payload: response.data }))
+      yield put({ type: 'SET_MOVIES', payload: response.data })
     }
     catch{
         console.log("get all movie details and genres error");
