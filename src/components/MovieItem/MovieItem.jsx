@@ -15,11 +15,14 @@ function MovieItem({ movie }) {
       type: "GET_MOVIE_DETAILS_ALL_GENRES",
       payload: movie.id,
     });
+    //on image click, the user will be routed to /details page
     history.push("/details");
   };
   return (
     <>
+      {/* displaying the movie title */}
       <h3>{movie.title}</h3>
+      {/* displaying the movie poster and onclick get movie details function will be called */}
       <img onClick={getMovieDetails} src={movie.poster} alt={movie.title} />
     </>
   );
