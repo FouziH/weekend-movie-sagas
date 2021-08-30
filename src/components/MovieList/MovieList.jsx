@@ -19,8 +19,8 @@ function MovieList() {
       >
         <Grid
           item
-          xs={2}
-          md={2}
+          xs={1}
+          md={3}
           spacing={10}
           container
           style={{
