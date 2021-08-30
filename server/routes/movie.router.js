@@ -15,8 +15,9 @@ router.get('/', (req, res) => {
     })
 
 });
-
+//making request to my server 
 router.get('/:id', (req, res) => {
+  //sql request for getting all genres for any movie
   const sqlQuery = `SELECT  "movies".poster as movieimage, ARRAY_AGG( "genres".name) as moviegenres, "movies".description as movieDescription FROM "movies_genres"
 JOIN "movies" ON "movies".id = "movies_genres".movie_id
 JOIN "genres" ON "genres".id = "movies_genres".genre_id
