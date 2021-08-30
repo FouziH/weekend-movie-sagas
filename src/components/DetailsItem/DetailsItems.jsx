@@ -82,11 +82,14 @@ function DetailsItem  ({items}) {
                 padding: 20,
               }}
             >
+            {/* Displaying the movie image */}
               <img src={items.movieimage} alt="" />
               <br />
               <br />
+              {/* displaying the movie genre */}
               <div>Genre: {items.moviegenres.join(", ")} </div>
               <br />
+              {/* displaying the movie description */}
               <div>{items.moviedescription}</div>
             </Paper>
           </Grid>
