@@ -19,18 +19,19 @@ function* rootSaga() {
     yield takeEvery ('FETCH_GENRE', fetchGenres)
 
 }
+// Create the rootSaga fetchGenres generator function
 function* fetchGenres (){
     try{
          let genres = yield axios.get('/api/genre')
 
         yield put({type: 'SET_GENRES', payload: genres.data })
     }
-    catch{
-         console.log("get all genres error");
+    catch(error){
+         console.log("get all genres error", error);
     }
 
 }
-
+// Create the rootSaga addMovie generator function
 function* addNewMovie (action) {
 
     try{
@@ -40,11 +41,11 @@ function* addNewMovie (action) {
 
       yield put({ type: 'SET_MOVIES', payload: response.data })
     }
-    catch{
-        console.log("get all movie details and genres error");
+    catch (error){
+        console.log(error);
     }
 }
-
+// Create the rootSaga  get movie genre generator function
 function* getMovieDetailsAllGenres(action) {
     try{
         const response = yield axios.get(`/api/movie/${action.payload}`)
@@ -52,12 +53,12 @@ function* getMovieDetailsAllGenres(action) {
 
         yield put({type:'MOVIE_DETAILS_PLUS_GENRES',payload: response.data })
     }
-    catch{
-        console.log("get all movie details and genres error");
+    catch(error){
+        console.log("get all movie details and genres error", error);
 
     }
 }
-
+// Create the rootSaga fetchAllMovie generator function
 function* fetchAllMovies() {
     // get all movies from the DB
     try {
@@ -88,6 +89,7 @@ const genres = (state = [], action) => {
             return state;
     }
 }
+//use to store movieGenres when a request is made 
 const getMovieDetailsAndGenres = (state =[], action) => {
     switch(action.type) {
         case 'MOVIE_DETAILS_PLUS_GENRES':
