@@ -5,8 +5,26 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Grid} from "@material-ui/core"
 import {Container} from "@material-ui/core";
 import { Paper } from "@material-ui/core";
+import { MenuItem } from "@material-ui/core";
+import { Menu } from "@material-ui/core";
+import{useState} from 'react'
+import ViewHeadlineTwoToneIcon from "@material-ui/icons/ViewHeadlineTwoTone";
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
+
+
 
 function DetailsItem  ({items}) {
+  const [anchorEl, setAnchorEl] = useState(null)
   const history = useHistory();
   const useStyles = makeStyles({
     root: {
@@ -28,6 +46,14 @@ function DetailsItem  ({items}) {
    const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
+  const handleClose =() => {
+    setAnchorEl(null)
+  }
+  const openMenu = () => {
+    console.log("on open menu button")
+    setAnchorEl(event.currentTarget)
+  
+  }
   const goHome = () => {
     console.log('on go home button')
     history.push('/')
@@ -37,29 +63,21 @@ function DetailsItem  ({items}) {
   }
     return (
       <>
-        <div className="mainDetailsButtonDiv">
-          <div className="detailsButton">
-            <Button
-              size="small"
-              variant="contained"
-              color="primary"
-              onClick={goHome}
-            >
-              Home
-            </Button>
-          </div>
-          <div className="detailsButton">
-            <Button
-              size="small"
-              variant="contained"
-              color="primary"
-              onClick={addMovie}
-            >
-              Add Movie
-            </Button>
-          </div>
-        </div>
-        <br />
+        <ViewHeadlineTwoToneIcon onClick={openMenu}></ViewHeadlineTwoToneIcon>
+        <Menu
+          id="menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose} onClick={goHome}>
+            HOME
+          </MenuItem>
+          <MenuItem onClick={addMovie}>
+            ADD MOVIE
+          </MenuItem>
+        </Menu>
         <Container className={classes.root}>
           <Grid
             container
