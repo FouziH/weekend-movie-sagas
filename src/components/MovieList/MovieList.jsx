@@ -7,11 +7,13 @@ import { Container } from "@material-ui/core";
 import { Paper } from "@material-ui/core";
 
 function MovieList() {
+  //using the useEffect to fetch movies
       useEffect(() => {
         dispatch({ type: "FETCH_MOVIES" });
       }, []);
-      
+    //creating my dispatch variable 
     const dispatch = useDispatch();
+    //calling my movie reducer from redux store 
     const movies = useSelector(store => store.movies);
 
     return (
@@ -30,8 +32,10 @@ function MovieList() {
           direction="column"
         >
           <Grid item>
+            {/* mapping through the movie */}
             {movies.map((movie) => (
               <Paper key={movie.id}>
+                {/* calling movieItem and passing movie as a prop */}
                 <MovieItem movie={movie} />
               </Paper>
             ))}
