@@ -24,25 +24,32 @@ function addMovie() {
     description: description,
     genre_id: selectGenre,
   };
+  //calling fetch genre 
     useEffect(() => {
       dispatch({
         type: "FETCH_GENRE",
       });
     }, []);
+    //calling my genre store reducer 
   const genres = useSelector(store => store.genres)
   console.log(genres)
 
+  //on save movie 
   const onSaveMovie = () => {
     console.log("on save movie button");
+    //we will dispatch the payloadObject and type to saga 
     dispatch({
       type: "ADD_NEW_MOVIE",
       payload: payloadObject,
     });
      console.log("on cancel button");
+     //and we will redirect the user to the home page 
      history.push("/");
   };
    const onCancel = () => {
      console.log("on cancel button");
+     //when the cancel button is pressed
+     //user will be routed to the homepage
      history.push("/");
    };
   return (
@@ -62,6 +69,7 @@ function addMovie() {
           direction="row"
         >
           <Grid>
+            {/* this will get the movie name/title */}
             <TextField
               variant="outlined"
               label="Name"
@@ -71,6 +79,7 @@ function addMovie() {
               value={title}
               onChange={(event) => setTitle(event.target.value)}
             />
+            {/* this will get the movie image/url */}
             <TextField
               variant="outlined"
               label="Image"
@@ -80,6 +89,7 @@ function addMovie() {
               style={{ width: 500, margin: 5 }}
               onChange={(event) => setImageUrl(event.target.value)}
             />
+            {/* This will get the movie description  */}
             <TextField
               placeholder="Enter movie description"
               variant="outlined"
@@ -91,6 +101,7 @@ function addMovie() {
               onChange={(event) => setDescription(event.target.value)}
               cols="50"
             />
+            {/* User will be able to select movie genre from the dropdown option  */}
             <Select
               variant="outlined"
               placeholder="Select genre"
@@ -99,6 +110,7 @@ function addMovie() {
               placeholder="Choose a genre"
               onChange={(event) => setSelectGenre(event.target.value)}
             >
+              {/* mapping throught our genre reducer tp get genres as option dropdown */}
               {genres.map((genreName, i) => (
                 <MenuItem style={{ width: 150 }} value={genreName.id} key={i}>
                   {genreName.name}
@@ -107,6 +119,7 @@ function addMovie() {
             </Select>
             <div className="mainAddMovie">
               <div className="addMovie">
+                {/* save movie button */}
                 <Button
                   variant="contained"
                   color="primary"
@@ -116,6 +129,7 @@ function addMovie() {
                 </Button>
               </div>
               <div className="addMovie">
+                {/* cancel movie button */}
                 <Button
                   variant="contained"
                   color="secondary"
